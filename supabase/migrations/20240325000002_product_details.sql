@@ -1,0 +1,15 @@
+-- Complete product details
+ALTER TABLE public.products
+  ADD COLUMN IF NOT EXISTS sku TEXT,
+  ADD COLUMN IF NOT EXISTS brand TEXT DEFAULT 'LKLN',
+  ADD COLUMN IF NOT EXISTS gender TEXT DEFAULT 'unisex',
+  ADD COLUMN IF NOT EXISTS sizes TEXT[] DEFAULT '{}',
+  ADD COLUMN IF NOT EXISTS colors TEXT[] DEFAULT '{}',
+  ADD COLUMN IF NOT EXISTS material TEXT,
+  ADD COLUMN IF NOT EXISTS fit TEXT,
+  ADD COLUMN IF NOT EXISTS care_instructions TEXT,
+  ADD COLUMN IF NOT EXISTS original_price DECIMAL(12,2),
+  ADD COLUMN IF NOT EXISTS tags TEXT[] DEFAULT '{}';
+
+CREATE UNIQUE INDEX IF NOT EXISTS products_sku_uidx ON public.products (sku);
+NOTIFY pgrst, 'reload schema';

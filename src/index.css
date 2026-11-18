@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-premium-pink: #FFF5F7;
+  --color-premium-deep-pink: #FFD1DC;
+  --color-premium-accent: #FF69B4;
+  --color-premium-dark: #0f172a;
+  --color-premium-gray: #f8fafc;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 selection:bg-pink-100;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/80 border border-white/40;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-md bg-slate-900/90 border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-rose-400 to-pink-600;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
